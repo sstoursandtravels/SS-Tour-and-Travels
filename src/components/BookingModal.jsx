@@ -41,31 +41,13 @@ const BookingModal = () => {
         return message;
     };
 
-    const handleWhatsAppRedirect = (number1, number2) => {
-        const message = constructMessage();
-        const whatsappUrl1 = `https://wa.me/91${number1}?text=${encodeURIComponent(message)}`;
-        const whatsappUrl2 = `https://wa.me/91${number2}?text=${encodeURIComponent(message)}`;
-        
-        // Trick: Use a real link click for the first one
-        const link = document.createElement('a');
-        link.href = whatsappUrl1;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        
-        // Use window.open for the second one
-        setTimeout(() => {
-            window.open(whatsappUrl2, '_blank');
-        }, 100);
-
-        closeBookingModal();
-    };
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleWhatsAppRedirect('9948058679', '9063986349');
+        const message = constructMessage();
+        // Send to WhatsApp group with pre-filled message
+        const groupUrl = `https://wa.me/919948058679?text=${encodeURIComponent(message)}`;
+        window.open(`https://chat.whatsapp.com/KwSMmuU13Nm0YgNzczkiJW`, '_blank');
+        closeBookingModal();
     };
 
     return (
@@ -152,15 +134,11 @@ const BookingModal = () => {
                                 type="submit"
                                 className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-4 rounded-xl shadow-lg transform active:scale-95 transition-all flex items-center justify-center gap-2 mt-4"
                             >
-                                <FaWhatsapp size={24} /> Send Inquiry
+                                <FaWhatsapp size={24} /> Send Inquiry via WhatsApp
                             </button>
 
-                            <p className="text-[10px] text-center text-gray-400 mt-2">
-                                * This will open WhatsApp chats. Please allow popups if prompted.
-                            </p>
-
                             <p className="text-xs text-center text-gray-500 mt-2">
-                                We will check availability and confirm your booking immediately via WhatsApp/Phone.
+                                We will check availability and confirm your booking immediately.
                             </p>
                         </form>
                     </motion.div>
