@@ -6,7 +6,7 @@ import { useBooking } from '../context/BookingContext';
 const Hero = () => {
     const { openBookingModal } = useBooking();
     return (
-        <section id="home" className="relative h-screen min-h-[600px] flex items-center justify-start overflow-hidden">
+        <section id="home" className="relative h-screen min-h-[600px] flex items-center justify-start overflow-hidden pt-24 md:pt-32">
             {/* Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
                 <img
