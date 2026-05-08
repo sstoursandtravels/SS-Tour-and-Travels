@@ -41,26 +41,28 @@ const BookingModal = () => {
         return message;
     };
 
-    const handleWhatsAppRedirect = (number1, number2) => {
-        const message = constructMessage();
-        const whatsappUrl1 = `https://wa.me/91${number1}?text=${encodeURIComponent(message)}`;
-        const whatsappUrl2 = `https://wa.me/91${number2}?text=${encodeURIComponent(message)}`;
-        
-        // Open the first one
-        window.open(whatsappUrl1, '_blank');
-        
-        // Try to open the second one after a tiny delay
-        // Note: Browsers might block this, so we close the modal after a bit more time
-        setTimeout(() => {
-            window.open(whatsappUrl2, '_blank');
-        }, 300);
+    const [step, setStep] = useState(1);
 
-        closeBookingModal();
+    const handleWhatsAppRedirect = (number) => {
+        const message = constructMessage();
+        const whatsappUrl = `https://wa.me/91${number}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+        
+        if (step === 1) {
+            setStep(2);
+        } else {
+            closeBookingModal();
+            setStep(1); // Reset for next time
+        }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleWhatsAppRedirect('9948058679', '9063986349');
+        if (step === 1) {
+            handleWhatsAppRedirect('9948058679');
+        } else {
+            handleWhatsAppRedirect('9063986349');
+        }
     };
 
     return (
@@ -145,13 +147,15 @@ const BookingModal = () => {
 
                             <button
                                 type="submit"
-                                className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-4 rounded-xl shadow-lg transform active:scale-95 transition-all flex items-center justify-center gap-2 mt-4"
+                                className={`w-full ${step === 1 ? 'bg-[#25D366] hover:bg-[#128C7E]' : 'bg-[#128C7E] hover:bg-[#075E54]'} text-white font-bold py-4 rounded-xl shadow-lg transform active:scale-95 transition-all flex items-center justify-center gap-2 mt-4`}
                             >
-                                <FaWhatsapp size={24} /> Send Inquiry 
+                                <FaWhatsapp size={24} /> {step === 1 ? 'Send Inquiry' : 'Send to Second Number'}
                             </button>
 
                             <p className="text-[10px] text-center text-gray-400 mt-2">
-                                * This will attempt to open two WhatsApp chats. Please allow popups if prompted.
+                                {step === 1 
+                                    ? "* This will open WhatsApp with your enquiry." 
+                                    : "* First message sent! Click again to send to our second operator."}
                             </p>
 
                             <p className="text-xs text-center text-gray-500 mt-2">
