@@ -141,7 +141,7 @@ const FeedbackModal = ({ isOpen, onClose }) => {
                                 type="submit"
                                 className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-4 rounded-xl shadow-lg transform active:scale-95 transition-all flex items-center justify-center gap-2"
                             >
-                                <FaWhatsapp size={24} /> Send Feedback to Both Numbers
+                                <FaWhatsapp size={24} /> Send Feedback
                             </button>
 
                             <p className="text-[10px] text-center text-gray-400 mt-1">
