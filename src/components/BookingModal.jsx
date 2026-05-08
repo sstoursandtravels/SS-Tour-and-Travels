@@ -47,9 +47,21 @@ const BookingModal = () => {
         const url1 = `https://wa.me/919063986349?text=${encodeURIComponent(message)}`;
         const url2 = `https://wa.me/919948058679?text=${encodeURIComponent(message)}`;
 
-        // Open both synchronously inside user click event
+        // Open both WhatsApp windows synchronously
         window.open(url1, '_blank');
         window.open(url2, '_blank');
+
+        // Send email automatically via Node.js API
+        fetch('/api/send-email', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                type: 'booking',
+                name: formData.name,
+                phone: formData.phone,
+                vehicle: formData.vehicle || 'Any',
+            }),
+        }).catch(err => console.error('Email API error:', err));
 
         closeBookingModal();
     };
