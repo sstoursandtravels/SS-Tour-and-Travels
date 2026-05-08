@@ -35,7 +35,7 @@ const Footer = () => {
                                 <a href="https://www.instagram.com/ss_toursandtravels07" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-red-500 hover:to-purple-500 transition-all duration-300 shadow-lg group">
                                     <FaInstagram size={18} className="group-hover:scale-110 transition-transform" />
                                 </a>
-                                <a href="https://wa.me/919948058679" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-[#25D366] transition-all duration-300 shadow-lg group">
+                                <a href="https://chat.whatsapp.com/KwSMmuU13Nm0YgNzczkiJW" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-[#25D366] transition-all duration-300 shadow-lg group">
                                     <FaWhatsapp size={18} className="group-hover:scale-110 transition-transform" />
                                 </a>
                             </div>

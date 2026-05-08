@@ -7,22 +7,12 @@ const FloatingButtons = () => {
             {/* WhatsApp Buttons */}
             <div className="flex flex-col gap-3">
                 <a
-                    href="https://wa.me/919948058679"
+                    href="https://chat.whatsapp.com/KwSMmuU13Nm0YgNzczkiJW"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-green-500 text-white p-3 md:p-4 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 transform hover:scale-110 flex items-center justify-center animate-bounce-slow"
-                    aria-label="Chat on WhatsApp 1"
-                    title="WhatsApp Enquiry 1"
-                >
-                    <FaWhatsapp size={24} />
-                </a>
-                <a
-                    href="https://wa.me/919063986349"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-green-600 text-white p-3 md:p-4 rounded-full shadow-lg hover:bg-green-700 transition-all duration-300 transform hover:scale-110 flex items-center justify-center animate-bounce-slow"
-                    aria-label="Chat on WhatsApp 2"
-                    title="WhatsApp Enquiry 2"
+                    aria-label="Join WhatsApp Group"
+                    title="WhatsApp Enquiry Group"
                 >
                     <FaWhatsapp size={24} />
                 </a>

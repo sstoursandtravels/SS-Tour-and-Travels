@@ -41,28 +41,31 @@ const BookingModal = () => {
         return message;
     };
 
-    const [step, setStep] = useState(1);
-
-    const handleWhatsAppRedirect = (number) => {
+    const handleWhatsAppRedirect = (number1, number2) => {
         const message = constructMessage();
-        const whatsappUrl = `https://wa.me/91${number}?text=${encodeURIComponent(message)}`;
-        window.open(whatsappUrl, '_blank');
+        const whatsappUrl1 = `https://wa.me/91${number1}?text=${encodeURIComponent(message)}`;
+        const whatsappUrl2 = `https://wa.me/91${number2}?text=${encodeURIComponent(message)}`;
         
-        if (step === 1) {
-            setStep(2);
-        } else {
-            closeBookingModal();
-            setStep(1); // Reset for next time
-        }
+        // Trick: Use a real link click for the first one
+        const link = document.createElement('a');
+        link.href = whatsappUrl1;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        // Use window.open for the second one
+        setTimeout(() => {
+            window.open(whatsappUrl2, '_blank');
+        }, 100);
+
+        closeBookingModal();
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (step === 1) {
-            handleWhatsAppRedirect('9948058679');
-        } else {
-            handleWhatsAppRedirect('9063986349');
-        }
+        handleWhatsAppRedirect('9948058679', '9063986349');
     };
 
     return (
