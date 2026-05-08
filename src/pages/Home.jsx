@@ -14,7 +14,7 @@ const Home = () => {
         <>
             <SEO
                 title="Best Cabs & Taxi Service in Hyderabad"
-                description="Premium taxi services in Hyderabad. One-way outstation, airport transfers, and local packages. Call 9948058679 for bookings."
+                description="Premium taxi services in Hyderabad. One-way outstation, airport transfers, and local packages. Call 9948058679 or 9063986349 for bookings."
                 keywords="taxi Hyderabad, car rentals, airport taxi Hyderabad, outstation cabs"
             />
             <Hero />

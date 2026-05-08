@@ -107,6 +107,7 @@ const Footer = () => {
                                     <div>
                                         <p className="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-1">Phone</p>
                                         <p className="text-gray-300 text-sm">9948058679</p>
+                                        <p className="text-gray-300 text-sm">9063986349</p>
                                         <p className="text-gray-300 text-sm">9848566519</p>
                                     </div>
                                 </li>

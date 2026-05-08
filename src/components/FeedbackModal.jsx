@@ -24,10 +24,7 @@ const FeedbackModal = ({ isOpen, onClose }) => {
         }));
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        // Construct the message
+    const constructMessage = () => {
         let message = "```\n";
         message += "----------------------------\n";
         message += "      CUSTOMER FEEDBACK     \n";
@@ -37,11 +34,20 @@ const FeedbackModal = ({ isOpen, onClose }) => {
         message += `Feedback  : ${formData.message}\n`;
         message += "----------------------------\n";
         message += "```";
+        return message;
+    };
 
-        const whatsappUrl = `https://wa.me/919948058679?text=${encodeURIComponent(message)}`;
+    const handleWhatsAppRedirect = (number) => {
+        const message = constructMessage();
+        const whatsappUrl = `https://wa.me/91${number}?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');
         onClose();
         setFormData({ name: '', rating: 5, message: '' }); // Reset form
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        handleWhatsAppRedirect('9948058679');
     };
 
     return (
@@ -122,12 +128,22 @@ const FeedbackModal = ({ isOpen, onClose }) => {
                                 </div>
                             </div>
 
-                            <button
-                                type="submit"
-                                className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-4 rounded-xl shadow-lg transform active:scale-95 transition-all flex items-center justify-center gap-2"
-                            >
-                                <FaWhatsapp size={24} /> Send Feedback on WhatsApp
-                            </button>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <button
+                                    type="button"
+                                    onClick={() => handleWhatsAppRedirect('9948058679')}
+                                    className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-4 rounded-xl shadow-lg transform active:scale-95 transition-all flex items-center justify-center gap-2"
+                                >
+                                    <FaWhatsapp size={20} /> Option 1
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => handleWhatsAppRedirect('9063986349')}
+                                    className="w-full bg-[#128C7E] hover:bg-[#075E54] text-white font-bold py-4 rounded-xl shadow-lg transform active:scale-95 transition-all flex items-center justify-center gap-2"
+                                >
+                                    <FaWhatsapp size={20} /> Option 2
+                                </button>
+                            </div>
                         </form>
                     </motion.div>
                 </div>

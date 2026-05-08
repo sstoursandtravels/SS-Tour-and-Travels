@@ -4,16 +4,29 @@ import { FaWhatsapp, FaPhoneAlt } from 'react-icons/fa';
 const FloatingButtons = () => {
     return (
         <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
-            {/* WhatsApp Button */}
-            <a
-                href="https://wa.me/919948058679"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-green-500 text-white p-3 md:p-4 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 transform hover:scale-110 flex items-center justify-center animate-bounce-slow"
-                aria-label="Chat on WhatsApp"
-            >
-                <FaWhatsapp size={24} md:size={28} />
-            </a>
+            {/* WhatsApp Buttons */}
+            <div className="flex flex-col gap-3">
+                <a
+                    href="https://wa.me/919948058679"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-green-500 text-white p-3 md:p-4 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 transform hover:scale-110 flex items-center justify-center animate-bounce-slow"
+                    aria-label="Chat on WhatsApp 1"
+                    title="WhatsApp Enquiry 1"
+                >
+                    <FaWhatsapp size={24} />
+                </a>
+                <a
+                    href="https://wa.me/919063986349"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-green-600 text-white p-3 md:p-4 rounded-full shadow-lg hover:bg-green-700 transition-all duration-300 transform hover:scale-110 flex items-center justify-center animate-bounce-slow"
+                    aria-label="Chat on WhatsApp 2"
+                    title="WhatsApp Enquiry 2"
+                >
+                    <FaWhatsapp size={24} />
+                </a>
+            </div>
 
             {/* Call Button (Mobile Only usually, but good to have) */}
             <a

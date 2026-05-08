@@ -28,6 +28,7 @@ const Contact = () => {
                                 <div>
                                     <h3 className="text-xl font-bold text-primary mb-2">Phone Numbers</h3>
                                     <p className="text-gray-600 mb-1"><a href="tel:9948058679" className="hover:text-secondary transition">9948058679</a></p>
+                                    <p className="text-gray-600 mb-1"><a href="tel:9063986349" className="hover:text-secondary transition">9063986349</a></p>
                                     <p className="text-gray-600"><a href="tel:9848566519" className="hover:text-secondary transition">9848566519</a></p>
                                 </div>
                             </div>

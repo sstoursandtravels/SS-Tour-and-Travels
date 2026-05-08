@@ -28,10 +28,7 @@ const BookingModal = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        // Construct the message using WhatsApp monospace (```) to simulate a table
+    const constructMessage = () => {
         let message = "```\n";
         message += "----------------------------\n";
         message += "      BOOKING REQUEST       \n";
@@ -41,11 +38,20 @@ const BookingModal = () => {
         message += `Vehicle   : ${formData.vehicle || 'Any'}\n`;
         message += "----------------------------\n";
         message += "```";
+        return message;
+    };
 
-        // Encode the message to ensure it works correctly in the URL
-        const whatsappUrl = `https://wa.me/919948058679?text=${encodeURIComponent(message)}`;
+    const handleWhatsAppRedirect = (number) => {
+        const message = constructMessage();
+        const whatsappUrl = `https://wa.me/91${number}?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');
         closeBookingModal();
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // By default, open the first one if the form is submitted via Enter key
+        handleWhatsAppRedirect('9948058679');
     };
 
     return (
@@ -128,12 +134,26 @@ const BookingModal = () => {
                                 </div>
                             </div>
 
-                            <button
-                                type="submit"
-                                className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-4 rounded-xl shadow-lg transform active:scale-95 transition-all flex items-center justify-center gap-2 mt-4"
-                            >
-                                <FaWhatsapp size={24} /> Send Inquiry on WhatsApp
-                            </button>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+                                <button
+                                    type="button"
+                                    onClick={() => handleWhatsAppRedirect('9948058679')}
+                                    className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-4 rounded-xl shadow-lg transform active:scale-95 transition-all flex items-center justify-center gap-2"
+                                >
+                                    <FaWhatsapp size={20} /> Option 1
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => handleWhatsAppRedirect('9063986349')}
+                                    className="w-full bg-[#128C7E] hover:bg-[#075E54] text-white font-bold py-4 rounded-xl shadow-lg transform active:scale-95 transition-all flex items-center justify-center gap-2"
+                                >
+                                    <FaWhatsapp size={20} /> Option 2
+                                </button>
+                            </div>
+
+                            <p className="text-[10px] text-center text-gray-400 mt-1">
+                                Choose any option to send your inquiry to our available team members.
+                            </p>
 
                             <p className="text-xs text-center text-gray-500 mt-2">
                                 We will check availability and confirm your booking immediately via WhatsApp/Phone.
