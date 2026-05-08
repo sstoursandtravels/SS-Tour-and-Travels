@@ -40,8 +40,8 @@ const FeedbackModal = ({ isOpen, onClose }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const message = constructMessage();
-        const url1 = `https://wa.me/919948058679?text=${encodeURIComponent(message)}`;
-        const url2 = `https://wa.me/919063986349?text=${encodeURIComponent(message)}`;
+        const url1 = `https://wa.me/919063986349?text=${encodeURIComponent(message)}`;
+        const url2 = `https://wa.me/919948058679?text=${encodeURIComponent(message)}`;
 
         // Open both synchronously inside user click event
         window.open(url1, '_blank');
