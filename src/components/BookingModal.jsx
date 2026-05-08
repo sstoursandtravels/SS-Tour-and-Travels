@@ -41,17 +41,26 @@ const BookingModal = () => {
         return message;
     };
 
-    const handleWhatsAppRedirect = (number) => {
+    const handleWhatsAppRedirect = (number1, number2) => {
         const message = constructMessage();
-        const whatsappUrl = `https://wa.me/91${number}?text=${encodeURIComponent(message)}`;
-        window.open(whatsappUrl, '_blank');
+        const whatsappUrl1 = `https://wa.me/91${number1}?text=${encodeURIComponent(message)}`;
+        const whatsappUrl2 = `https://wa.me/91${number2}?text=${encodeURIComponent(message)}`;
+        
+        // Open the first one
+        window.open(whatsappUrl1, '_blank');
+        
+        // Try to open the second one after a tiny delay
+        // Note: Browsers might block this, so we close the modal after a bit more time
+        setTimeout(() => {
+            window.open(whatsappUrl2, '_blank');
+        }, 300);
+
         closeBookingModal();
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // By default, open the first one if the form is submitted via Enter key
-        handleWhatsAppRedirect('9948058679');
+        handleWhatsAppRedirect('9948058679', '9063986349');
     };
 
     return (
@@ -134,25 +143,15 @@ const BookingModal = () => {
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
-                                <button
-                                    type="button"
-                                    onClick={() => handleWhatsAppRedirect('9948058679')}
-                                    className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-4 rounded-xl shadow-lg transform active:scale-95 transition-all flex items-center justify-center gap-2"
-                                >
-                                    <FaWhatsapp size={20} /> Option 1
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={() => handleWhatsAppRedirect('9063986349')}
-                                    className="w-full bg-[#128C7E] hover:bg-[#075E54] text-white font-bold py-4 rounded-xl shadow-lg transform active:scale-95 transition-all flex items-center justify-center gap-2"
-                                >
-                                    <FaWhatsapp size={20} /> Option 2
-                                </button>
-                            </div>
+                            <button
+                                type="submit"
+                                className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-4 rounded-xl shadow-lg transform active:scale-95 transition-all flex items-center justify-center gap-2 mt-4"
+                            >
+                                <FaWhatsapp size={24} /> Send Inquiry to Both Numbers
+                            </button>
 
-                            <p className="text-[10px] text-center text-gray-400 mt-1">
-                                Choose any option to send your inquiry to our available team members.
+                            <p className="text-[10px] text-center text-gray-400 mt-2">
+                                * This will attempt to open two WhatsApp chats. Please allow popups if prompted.
                             </p>
 
                             <p className="text-xs text-center text-gray-500 mt-2">
