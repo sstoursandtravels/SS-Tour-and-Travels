@@ -150,15 +150,13 @@ const BookingModal = () => {
 
                             <button
                                 type="submit"
-                                className={`w-full ${step === 1 ? 'bg-[#25D366] hover:bg-[#128C7E]' : 'bg-[#128C7E] hover:bg-[#075E54]'} text-white font-bold py-4 rounded-xl shadow-lg transform active:scale-95 transition-all flex items-center justify-center gap-2 mt-4`}
+                                className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-4 rounded-xl shadow-lg transform active:scale-95 transition-all flex items-center justify-center gap-2 mt-4"
                             >
-                                <FaWhatsapp size={24} /> {step === 1 ? 'Send Inquiry' : 'Send to Second Number'}
+                                <FaWhatsapp size={24} /> Send Inquiry
                             </button>
 
                             <p className="text-[10px] text-center text-gray-400 mt-2">
-                                {step === 1 
-                                    ? "* This will open WhatsApp with your enquiry." 
-                                    : "* First message sent! Click again to send to our second operator."}
+                                * This will open WhatsApp chats. Please allow popups if prompted.
                             </p>
 
                             <p className="text-xs text-center text-gray-500 mt-2">
