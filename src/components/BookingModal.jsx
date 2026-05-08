@@ -44,9 +44,8 @@ const BookingModal = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const message = constructMessage();
-        // Send to WhatsApp group with pre-filled message
-        const groupUrl = `https://wa.me/919948058679?text=${encodeURIComponent(message)}`;
-        window.open(`https://chat.whatsapp.com/KwSMmuU13Nm0YgNzczkiJW`, '_blank');
+        const whatsappUrl = `https://wa.me/919948058679?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
         closeBookingModal();
     };
 

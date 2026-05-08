@@ -39,8 +39,9 @@ const FeedbackModal = ({ isOpen, onClose }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Open WhatsApp group directly
-        window.open(`https://chat.whatsapp.com/KwSMmuU13Nm0YgNzczkiJW`, '_blank');
+        const message = constructMessage();
+        const whatsappUrl = `https://wa.me/919948058679?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
         onClose();
         setFormData({ name: '', rating: 5, message: '' });
     };
